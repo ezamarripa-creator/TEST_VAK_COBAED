@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COBAED · Test de VAK · Semestre 2026A</title>
+<meta name="description" content="Test de VAK institucional COBAED — Semestre 2026A. Descubre tu estilo de aprendizaje dominante.">
+<meta name="theme-color" content="#5B7C99">
+<link rel="manifest" href="manifest.json">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<!-- Material Icons + FontAwesome -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- Animate.css + AOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+<!-- Hoja de estilos propia -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="loader-envio"><div class="spinner"></div></div>
+
+<header class="top-header">
+  <div class="marca">
+    <img src="https://placehold.co/80x80/5B7C99/FFFFFF?text=COBAED" alt="Logo COBAED">
+    <div class="titulos">
+      <h1>SEMESTRE 2026A · TEST DE VAK</h1>
+      <small>👨‍🎓👩‍🎓 Alumno(a) — Departamento de Planeación Académica</small>
+    </div>
+  </div>
+  <button id="btn-toggle-tema" class="btn-icono" title="Cambiar tema" aria-label="Cambiar modo claro/oscuro">
+    <span id="icono-tema" class="material-icons">dark_mode</span>
+  </button>
+</header>
+
+<!-- =================== PANTALLA 1: INTRODUCCIÓN =================== -->
+<section id="pantalla-intro" class="pantalla">
+  <div class="intro-hero" data-aos="fade-up">
+    <h1>Descubre tu estilo de aprendizaje dominante</h1>
+    <p class="subtitulo">El aprendizaje es un proceso activo y dinámico. Cuando no "sucede" de forma natural, es necesario identificar el estilo propio de cada persona para aprovechar al máximo su potencial.</p>
+  </div>
+
+  <div class="glass-card" data-aos="fade-up">
+    <h2>Tipo de percepción dominante</h2>
+    <p>Toda persona recibe información, la procesa por su vía preferente y la expresa según sus características comunicacionales, estilo y dominancias sensoriales y cerebrales. El Test de VAK (Visual · Auditivo · Kinestésico) te permitirá conocer más sobre tu tipo de percepción dominante al momento de capturar la información.</p>
+    <p>En el campo de la psicopedagogía, la PNL (Programación Neurolingüística) nos ayuda a comprender mejor cuáles son las vías preferentes de entrada, procesamiento y salida de la información, y cuál sería el estilo de una persona con una vía sensorial preferente.</p>
+  </div>
+
+  <div class="tarjetas-info">
+    <div class="tarjeta-canal glass-card visual" data-aos="zoom-in" data-aos-delay="0">
+      <span class="material-icons">visibility</span>
+      <h3>Visual</h3>
+      <p>Aprende principalmente mediante imágenes; se fija en las características que puede ver e imaginar. Este aprendizaje suele ser muy rápido: recordará la página del libro, los esquemas y hasta el color del traje del docente.</p>
+    </div>
+    <div class="tarjeta-canal glass-card auditivo" data-aos="zoom-in" data-aos-delay="100">
+      <span class="material-icons">hearing</span>
+      <h3>Auditivo</h3>
+      <p>Aprende principalmente mediante sonidos, memorizando lecciones como secuencias casi literales. Necesita silencio para estudiar o prefiere escuchar que otros lean el contenido; también puede preferir estudiar con música.</p>
+    </div>
+    <div class="tarjeta-canal glass-card kinestesico" data-aos="zoom-in" data-aos-delay="200">
+      <span class="material-icons">touch_app</span>
+      <h3>Kinestésico</h3>
+      <p>Percibe con gran intensidad sensaciones y emociones; procesa por el tacto, el gusto, el olfato y el movimiento. Prefiere las clases prácticas y necesita continuamente el movimiento.</p>
+    </div>
+  </div>
+
+  <div class="glass-card" data-aos="fade-up" style="overflow-x:auto;">
+    <h2>Características</h2>
+    <table class="tabla-caracteristicas">
+      <thead><tr><th></th><th>Visual</th><th>Auditivo</th><th>Kinestésico</th></tr></thead>
+      <tbody>
+        <tr><th>Aprendizaje</th><td>Aprende lo que ve. Necesita una visión detallada y saber a dónde va. Recuerda menos lo que escucha.</td><td>Aprende lo que oye, repitiéndose paso a paso el proceso. Carece de visión global.</td><td>Aprende con lo que toca y lo que hace. Necesita estar involucrado personalmente en la actividad.</td></tr>
+        <tr><th>Memoria</th><td>Recuerda lo que ve: caras, pero no tanto nombres.</td><td>Recuerda lo que oye: nombres, pero no tanto caras.</td><td>Recuerda lo que hizo, o la impresión general, pero no tanto los detalles.</td></tr>
+        <tr><th>Imaginación</th><td>Piensa en imágenes; visualiza de manera detallada.</td><td>Piensa en sonidos; no recuerda tantos detalles.</td><td>Las imágenes son pocas y poco detalladas, siempre en movimiento.</td></tr>
+        <tr><th>Distracción</th><td>Cuando hay movimiento o desorden visual; el ruido no le molesta demasiado.</td><td>Cuando hay ruido.</td><td>Cuando las explicaciones son básicamente auditivas o visuales y no le involucran de alguna forma.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="cta-central" data-aos="fade-up">
+    <button id="btn-iniciar" class="btn-primario"><span class="material-icons">play_arrow</span> Iniciar Test de VAK</button>
+  </div>
+</section>
+
+<!-- =================== PANTALLA 2: FORMULARIO =================== -->
+<section id="pantalla-formulario" class="pantalla">
+  <div class="glass-card" data-aos="fade-up">
+    <h2><i class="fa-solid fa-id-card"></i> Datos del alumno(a)</h2>
+    <p style="color:var(--text-muted)">Completa todos los campos para continuar con el cuestionario.</p>
+    <div class="barra-progreso-wrap"><div id="barra-progreso-formulario" class="barra-progreso"></div></div>
+
+    <form id="form-vak" autocomplete="off" onsubmit="return false;">
+      <div class="form-grid">
+        <div class="campo">
+          <label for="plantel">Plantel *</label>
+          <select id="plantel" name="plantel" required><option value="">Selecciona tu plantel</option></select>
+        </div>
+        <div class="campo">
+          <label for="turno">Turno *</label>
+          <select id="turno" name="turno" required><option value="">Selecciona tu turno</option></select>
+        </div>
+        <div class="campo">
+          <label for="semestre">Semestre *</label>
+          <select id="semestre" name="semestre" required><option value="">Selecciona tu semestre</option></select>
+        </div>
+        <div class="campo">
+          <label for="nombre">Nombre completo *</label>
+          <input type="text" id="nombre" name="nombre" required placeholder="Nombre(s) y apellidos">
+        </div>
+        <div class="campo">
+          <label for="matricula">Matrícula *</label>
+          <input type="text" id="matricula" name="matricula" required placeholder="Ej. 20261234">
+        </div>
+        <div class="campo">
+          <label for="genero">Género *</label>
+          <select id="genero" name="genero" required><option value="">Selecciona</option></select>
+        </div>
+        <div class="campo">
+          <label for="grupo">Grupo *</label>
+          <input type="text" id="grupo" name="grupo" required placeholder="Ej. 1°A">
+        </div>
+        <div class="campo">
+          <label for="correo">Correo institucional *</label>
+          <input type="email" id="correo" name="correo" required placeholder="usuario@alumno.cobaed.edu.mx">
+        </div>
+      </div>
+    </form>
+
+    <div class="cta-central">
+      <button id="btn-ir-cuestionario" class="btn-primario"><span class="material-icons">arrow_forward</span> Continuar al cuestionario</button>
+    </div>
+  </div>
+</section>
+
+<!-- =================== PANTALLA 3: CUESTIONARIO =================== -->
+<section id="pantalla-cuestionario" class="pantalla">
+  <div class="glass-card">
+    <div class="barra-progreso-wrap"><div id="barra-progreso-cuestionario" class="barra-progreso"></div></div>
+    <p id="texto-progreso-cuestionario" style="color:var(--text-muted); font-size:0.85rem; margin:0 0 12px;">0 / 40 respondidas</p>
+
+    <div id="tarjeta-pregunta"></div>
+
+    <div class="nav-cuestionario">
+      <button id="btn-anterior" class="btn-secundario"><span class="material-icons">arrow_back</span> Anterior</button>
+      <button id="btn-siguiente" class="btn-primario">Siguiente <span class="material-icons">arrow_forward</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- =================== PANTALLA 4: RESULTADO =================== -->
+<section id="pantalla-resultado" class="pantalla">
+  <div class="glass-card resultado-header" data-aos="fade-up">
+    <h2 id="resultado-dominancia"></h2>
+    <p id="resultado-descripcion" style="color:var(--text-muted)"></p>
+  </div>
+
+  <div class="pct-cards">
+    <div class="glass-card pct-card"><div class="valor" id="pct-visual">0%</div>Visual</div>
+    <div class="glass-card pct-card"><div class="valor" id="pct-auditivo">0%</div>Auditivo</div>
+    <div class="glass-card pct-card"><div class="valor" id="pct-kinestesico">0%</div>Kinestésico</div>
+  </div>
+
+  <div class="grid-resultado">
+    <div class="glass-card"><h3>Radar</h3><canvas id="chart-radar"></canvas></div>
+    <div class="glass-card"><h3>Doughnut</h3><canvas id="chart-doughnut"></canvas></div>
+    <div class="glass-card"><h3>Barras</h3><canvas id="chart-barras"></canvas></div>
+  </div>
+
+  <div class="glass-card" data-aos="fade-up">
+    <h3>Resumen personalizado</h3>
+    <table class="tabla-yo" id="tabla-yo"></table>
+  </div>
+
+  <div class="grid-resultado">
+    <div class="glass-card"><h3>Fortalezas</h3><ul id="lista-fortalezas"></ul></div>
+    <div class="glass-card"><h3>Áreas de oportunidad</h3><ul id="lista-oportunidades"></ul></div>
+  </div>
+
+  <div class="acciones-resultado">
+    <button id="btn-descargar-pdf" class="btn-secundario"><span class="material-icons">download</span> Descargar PDF</button>
+    <button id="btn-imprimir" class="btn-secundario"><span class="material-icons">print</span> Imprimir</button>
+    <button id="btn-reenviar" class="btn-primario"><span class="material-icons">send</span> Enviar</button>
+  </div>
+</section>
+
+<footer class="aviso-confidencialidad">
+  AVISO DE CONFIDENCIALIDAD De conformidad con lo establecido en el inciso a del artículo 57 del "Acuerdo por el que se emiten las políticas y disposiciones para impulsar el uso y aprovechamiento de la informática, el gobierno digital, las tecnologías de la información y comunicación, y la seguridad de la información en la Administración Pública Federal", se informa que este mensaje y los datos adjuntos son para uso exclusivo de la persona o entidad a la que expresamente ha sido enviada, el cual puede contener información que por su naturaleza deba ser considerada como CONFIDENCIAL o RESERVADA, en términos de lo dispuesto en la Ley General de Transparencia y Acceso a la Información Pública y en la Ley General de Protección de Datos Personales en Posesión de Sujetos Obligados. Si por error ha recibido esta comunicación: 1) queda estrictamente prohibido la revelación, retransmisión, difusión, copia, impresión, modificación, alteración en toda o en alguna de sus partes o el uso de la información contenida en el archivo electrónico sea diverso al objeto por el cual se emitió; 2) notifíquelo al remitente; y 3) bórrelo de inmediato y en forma permanente, junto con cualquier copia digital o impresa, así como cualquier archivo anexo al mismo.
+</footer>
+
+<!-- Librerías externas -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert2/11.10.5/sweetalert2.all.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<!-- Lógica de la aplicación -->
+<script src="script.js"></script>
+</body>
+</html>
