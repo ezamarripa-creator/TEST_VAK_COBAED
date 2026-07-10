@@ -159,7 +159,7 @@ function validarMatricula(mat) {
 }
 
 function validarCorreoInstitucional(correo) {
-  return /^[a-zA-Z0-9._%+-]+@(cobaed\.edu\.mx|alumno\.cobaed\.edu\.mx)$/i.test(correo.trim());
+  return /^[a-zA-Z0-9._%+-]+@cobaed\.mx$/i.test(correo.trim());
 }
 
 /* ---------------------------------------------------------------------
@@ -227,7 +227,7 @@ function bindFormulario() {
         .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
         .split(' ').filter(Boolean).slice(0, 2).join('.');
       if (slug) {
-        $('#correo').value = `${slug}@alumno.cobaed.edu.mx`;
+        $('#correo').value = `${slug}@cobaed.mx`;
         STATE.form.correo = $('#correo').value;
       }
     }
@@ -504,6 +504,15 @@ async function registrarEnvio(resultado) {
     estado: estadoEntrega()
   };
 
+  if (!WEB_APP_URL || WEB_APP_URL.includes('REEMPLAZAR_CON_ID_DE_DESPLIEGUE')) {
+    console.error('WEB_APP_URL no ha sido configurada. Edita script.js y coloca la URL /exec real de tu implementación de Apps Script.');
+    alertaElegante({
+      icon: 'error', title: 'Backend no configurado',
+      text: 'La URL del Web App (WEB_APP_URL en script.js) todavía es el valor de ejemplo. Debes reemplazarla por la URL /exec de tu implementación antes de poder guardar resultados.'
+    });
+    return;
+  }
+
   try {
     $('#loader-envio').classList.add('visible');
     const resp = await fetch(WEB_APP_URL, {
@@ -511,7 +520,25 @@ async function registrarEnvio(resultado) {
       headers: { 'Content-Type': 'text/plain;charset=utf-8' }, // evita preflight CORS en Apps Script
       body: JSON.stringify(payload)
     });
-    const data = await resp.json();
+
+    const textoCrudo = await resp.text();
+    console.log('[VAK] HTTP', resp.status, resp.statusText);
+    console.log('[VAK] Respuesta cruda del servidor:', textoCrudo);
+
+    if (!resp.ok) {
+      throw new Error(`El servidor respondió con estado HTTP ${resp.status} (${resp.statusText}). Revisa la consola para el detalle.`);
+    }
+
+    let data;
+    try {
+      data = JSON.parse(textoCrudo);
+    } catch (parseErr) {
+      // Esto ocurre típicamente cuando Apps Script devolvió una página de
+      // inicio de sesión o de error HTML en vez de JSON (permisos, URL
+      // apuntando a /dev en vez de /exec, o el despliegue no es público).
+      throw new Error('La respuesta del servidor no fue JSON válido. Es probable que el Web App no esté implementado como "Cualquier usuario" o que la URL no termine en /exec. Ver consola.');
+    }
+
     if (data && data.ok) {
       toast('Resultados guardados correctamente');
       limpiarProgresoLocal();
@@ -519,10 +546,10 @@ async function registrarEnvio(resultado) {
       throw new Error((data && data.error) || 'Error desconocido del servidor');
     }
   } catch (err) {
-    console.error(err);
+    console.error('[VAK] Error al guardar en el servidor:', err);
     alertaElegante({
       icon: 'error', title: 'No se pudo guardar en el servidor',
-      text: 'Tus resultados se muestran localmente. Verifica tu conexión e inténtalo de nuevo con el botón "Enviar".'
+      html: `Tus resultados se muestran localmente. Detalle técnico:<br><code style="font-size:0.8rem">${sanitizar(err.message)}</code><br><br>Verifica tu conexión e inténtalo de nuevo con el botón "Enviar".`
     });
   } finally {
     $('#loader-envio').classList.remove('visible');
