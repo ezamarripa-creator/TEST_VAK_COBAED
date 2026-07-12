@@ -1,6 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+
+    <script>
+    (function() {
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+            return false;
+        });
+      
+       document.addEventListener('keydown', function(e) {
+            const key = e.key.toLowerCase();
+            if ((e.ctrlKey && (key === 'u' || key === 's' || key === 'c' || key === 'i' || key === 'j')) ||
+                (e.ctrlKey && e.shiftKey && (key === 'i' || key === 'j' || key === 'c')) ||
+                e.key === 'F12') {
+                e.preventDefault();
+                return false;
+            }
+        });
+        
+        let devtoolsTriggered = false;
+        setInterval(function() {
+            if (devtoolsTriggered) return;
+            const before = new Date();
+            debugger; 
+            const after = new Date();
+            if (after - before > 100) { 
+                devtoolsTriggered = true;
+                document.body.innerHTML = '<div style="text-align:center; padding:50px; font-family:sans-serif;"><h1 style="color:#042C53;">⚠️ Acceso no autorizado</h1><p>El uso de herramientas de desarrollo no está permitido en este recurso institucional.</p><p style="font-size:14px; margin-top:30px;">🔒 COBAED · Dirección Académica</p></div>';
+            }
+        }, 2000);
+        
+        const style = document.createElement('style');
+        style.textContent = `body { user-select: none; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; }`;
+        document.head.appendChild(style);
+    })();
+    </script>
+
+
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COBAED · Test de VAK · Semestre 2026A</title>
@@ -186,7 +224,7 @@
   <div class="acciones-resultado">
     <button id="btn-descargar-pdf" class="btn-secundario"><span class="material-icons">download</span> Descargar PDF</button>
     <button id="btn-imprimir" class="btn-secundario"><span class="material-icons">print</span> Imprimir</button>
-    <button id="btn-reenviar" class="btn-primario"><span class="material-icons">send</span> Enviar</button>
+    <button id="btn-reenviar" class="btn-primario" style="display:none;"><span class="material-icons">send</span> Reintentar envío</button>
   </div>
 </section>
 
